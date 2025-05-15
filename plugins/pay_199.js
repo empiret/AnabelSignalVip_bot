@@ -11,7 +11,7 @@ module.exports = (bot) => {
           reply_markup: {
             inline_keyboard: [
               [{ text: "Pay with VISA/MasterCard", callback_data: "pay_visa" }],
-              [{ text: "Pay with Cryptocurrency", callback_data: "pay_crypto" }]
+              [{ text: "Pay with Cryptocurrency", callback_data: "pay_crypto199" }]
             ],
           },
           parse_mode: "Markdown"
