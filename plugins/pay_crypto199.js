@@ -8,14 +8,13 @@ module.exports = (bot) => {
     try {
       await ctx.answerCbQuery();
 
-      // Create payment invoice
       const paymentData = {
         price_amount: 199.0,
         price_currency: "usd",
-        pay_currency: "btc", // or "eth" or others depending on your crypto choice
-        order_id: `telegram_${ctx.from.id}_${Date.now()}`, // unique order ID
-        order_description: "VIP Subscription - Forex Signals 1 Month",
-        ipn_callback_url: "https://your-server.com/nowpayments-callback" // optional webhook to track payment
+        pay_currency: "btc",
+        order_id: `telegram_${ctx.from.id}_${Date.now()}`,
+        order_description: "VIP Subscription - Forex Signals 3 Months",
+        ipn_callback_url: "https://your-server.com/nowpayments-callback"
       };
 
       const response = await axios.post(NOWPAYMENTS_API_URL, paymentData, {
@@ -27,7 +26,6 @@ module.exports = (bot) => {
 
       const paymentLink = response.data.invoice_url;
 
-      // Send payment link to user
       await ctx.telegram.sendMessage(
         ctx.chat.id,
         "Click the button below to pay with Cryptocurrency:",
@@ -36,17 +34,17 @@ module.exports = (bot) => {
             inline_keyboard: [
               [{ text: "Pay with Crypto", url: paymentLink }],
               [{ text: "« Back", callback_data: "pay_199" }],
+              [{ text: "Send Proof", callback_data: "send_proof199" }],
             ],
           },
         }
       );
-
-      // You still need to implement IPN (webhook) or polling on your backend to confirm payment
-      // Then send user invite link or failure message accordingly
-
     } catch (error) {
       console.error("Error creating crypto payment:", error);
-      await ctx.telegram.sendMessage(ctx.chat.id, "Sorry, failed to create payment. Try again later.");
+      await ctx.telegram.sendMessage(
+        ctx.chat.id,
+        "Sorry, failed to create payment. Please try again later."
+      );
     }
   });
 };
