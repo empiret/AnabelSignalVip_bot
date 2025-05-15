@@ -5,3 +5,4 @@ module.exports = {
         VIP_GROUP_LINK_199: 'https://t.me/empire_tech_update',
         VIP_GROUP_LINK_299: 'https://t.me/empire_tech_update',
 };
+
