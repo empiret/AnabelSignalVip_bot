@@ -1,3 +1,5 @@
+const config = require("../config");
+
 module.exports = (bot) => {
   bot.action("send_proof99", async (ctx) => {
     try {
