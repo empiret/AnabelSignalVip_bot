@@ -1,3 +1,4 @@
+
 module.exports = (bot) => {
   const sendStartMessage = (ctx) => {
     return ctx.editMessageMedia(
