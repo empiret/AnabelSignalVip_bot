@@ -2,7 +2,7 @@ module.exports = (bot) => {
   bot.action('gold_vip', async (ctx) => {
     await ctx.answerCbQuery();
     await ctx.replyWithPhoto(
-      { url: 'https://files.catbox.moe/your-gold-image.jpg' },
+    { url: 'https://files.catbox.moe/sx1d6k.jpg' },
       {
         caption: `*GOLD SIGNALS VIP* Subscription Options:\n\nPlease select a subscription package:`,
         parse_mode: 'Markdown',
