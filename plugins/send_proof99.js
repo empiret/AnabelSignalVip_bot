@@ -1,5 +1,7 @@
 const config = require("../config");
 
+const awaitingProofUsers = new Set();
+
 module.exports = (bot) => {
   bot.action("send_proof99", async (ctx) => {
     try {
