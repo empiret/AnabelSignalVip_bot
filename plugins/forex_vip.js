@@ -1,3 +1,4 @@
+module.exports = (bot) => {
 bot.action('forex_vip', async (ctx) => {
   // Answer the callback query to remove the "loading" state on the button
   await ctx.answerCbQuery();
