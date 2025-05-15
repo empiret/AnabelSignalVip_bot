@@ -15,7 +15,7 @@ module.exports = (bot) => {
           "*To Buy VIP:*\n" +
           "1. Choose a plan\n" +
           "2. Get your payment link\n" +
-          "3. Pay\n" + 
+          "3. Pay\n" +
           "4. Receive invitation link\n\n" +
           "*Need Help?* Contact: @laxtechbot",
         parse_mode: "Markdown",
