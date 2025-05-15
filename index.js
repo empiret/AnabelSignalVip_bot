@@ -2,7 +2,7 @@ const { Telegraf } = require('telegraf');
 const fs = require('fs');
 const path = require('path');
 
-const bot = new Telegraf('7835282217:AAFV-tPNJBOdULA4OewJd5b4q1zjYB_sTAQ'); 
+const bot = new Telegraf('7855368643:AAGy4Lbk6_t7F8J1x9Eus0-OCz2l9-kgBSo'); 
 
 // Load all plugins
 const pluginsPath = path.join(__dirname, 'plugins');
