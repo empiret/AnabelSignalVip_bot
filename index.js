@@ -1,8 +1,14 @@
 const { Telegraf } = require('telegraf');
 const fs = require('fs');
 const path = require('path');
+const BOT_TOKEN = config.BOT_TOKEN;
+if (!BOT_TOKEN) {
+  console.error("❌ BOT_TOKEN is missing!");
+  process.exit(1);
+}
 
-const bot = new Telegraf('7855368643:AAGy4Lbk6_t7F8J1x9Eus0-OCz2l9-kgBSo'); 
+const bot = new Telegraf(BOT_TOKEN);
+console.log("Installing plugins...");
 
 // Load all plugins
 const pluginsPath = path.join(__dirname, 'plugins');
