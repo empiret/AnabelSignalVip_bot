@@ -6,7 +6,7 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 // Your existing bot code
 const config = require("./config");
-const { Telegraf } = require('telegraf');
+const { Telegraf, session } = require('telegraf');
 const fs = require('fs');
 const path = require('path');
 const BOT_TOKEN = config.BOT_TOKEN;
@@ -17,6 +17,7 @@ if (!BOT_TOKEN) {
 }
 
 const bot = new Telegraf(BOT_TOKEN);
+bot.use(session());
 console.log("Installing plugins...");
 
 const pluginsPath = path.join(__dirname, 'plugins');
