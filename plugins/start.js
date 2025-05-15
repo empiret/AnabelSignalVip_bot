@@ -17,8 +17,10 @@ module.exports = (bot) => {
     );
   });
 
+  // Optional "Back" action
   bot.action('back_to_start', async (ctx) => {
     await ctx.answerCbQuery();
+    ctx.scene && ctx.scene.leave && ctx.scene.leave(); // optional if you're using scenes
     await ctx.replyWithPhoto(
       { url: 'https://files.catbox.moe/tg23p6.png' },
       {
