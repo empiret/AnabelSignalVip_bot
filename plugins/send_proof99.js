@@ -1,7 +1,4 @@
-const config = require("../config");
-
 module.exports = (bot) => {
-  // Step 1: Prompt user for proof
   bot.action("send_proof99", async (ctx) => {
     try {
       await ctx.answerCbQuery();
@@ -11,17 +8,14 @@ module.exports = (bot) => {
         { parse_mode: "Markdown" }
       );
 
-      // Set session flag to await proof
-      ctx.session = ctx.session || {};
-      ctx.session.awaiting_proof_99 = true;
+      awaitingProofUsers.add(ctx.from.id);  // Mark user as awaiting proof
     } catch (err) {
       console.error("Error prompting for proof:", err);
     }
   });
 
-  // Step 2: Handle incoming proof
   bot.on("message", async (ctx) => {
-    if (!ctx.session || !ctx.session.awaiting_proof_99) return;
+    if (!awaitingProofUsers.has(ctx.from.id)) return;  // Only handle if user is flagged
 
     const userId = ctx.from.id;
     const username = ctx.from.username || "N/A";
@@ -38,17 +32,21 @@ ${messageContent}
 
     try {
       if (ctx.message.photo || ctx.message.document) {
-        await ctx.telegram.copyMessage(config.ADMIN_ID, ctx.chat.id, ctx.message.message_id, {
-          caption: adminMessage,
-          parse_mode: "Markdown"
-        });
+        await ctx.telegram.copyMessage(
+          config.ADMIN_ID,
+          ctx.chat.id,
+          ctx.message.message_id,
+          {
+            caption: adminMessage,
+            parse_mode: "Markdown"
+          }
+        );
       } else {
         await ctx.telegram.sendMessage(config.ADMIN_ID, adminMessage, {
           parse_mode: "Markdown"
         });
       }
 
-      // Send inline keyboard to admin with plan-specific callback
       await ctx.telegram.sendMessage(config.ADMIN_ID, "Take action on this payment:", {
         reply_markup: {
           inline_keyboard: [
@@ -64,10 +62,10 @@ ${messageContent}
         ctx.chat.id,
         "Thank you. Your payment is being processed. You'll receive access shortly."
       );
+
+      awaitingProofUsers.delete(userId); // Remove flag after proof received
     } catch (err) {
       console.error("Error forwarding proof:", err);
     }
-
-    ctx.session.awaiting_proof_99 = false;
   });
 };
