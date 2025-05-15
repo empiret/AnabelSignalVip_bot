@@ -1,3 +1,4 @@
+const config = require("./config");
 const { Telegraf } = require('telegraf');
 const fs = require('fs');
 const path = require('path');
