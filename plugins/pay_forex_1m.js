@@ -18,7 +18,7 @@ module.exports = (bot) => {
           reply_markup: {
             inline_keyboard: [
               [{ text: "Pay $99 (Regular Price)", callback_data: "pay_99" }],
-              [{ text: "« Back", callback_data: "buyGoldVIP" }],
+              [{ text: "« Back", callback_data: "payForexVIP" }],
             ],
           },
         }
