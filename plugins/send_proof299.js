@@ -1,7 +1,8 @@
 const config = require("../config");
 
+const awaitingProofUsers299 = new Set();
+
 module.exports = (bot) => {
-  // Step 1: Prompt user for proof
   bot.action("send_proof299", async (ctx) => {
     try {
       await ctx.answerCbQuery();
@@ -11,17 +12,14 @@ module.exports = (bot) => {
         { parse_mode: "Markdown" }
       );
 
-      // Set session flag to await proof
-      ctx.session = ctx.session || {};
-      ctx.session.awaiting_proof_299 = true;
+      awaitingProofUsers299.add(ctx.from.id);  // Flag user awaiting proof
     } catch (err) {
       console.error("Error prompting for proof:", err);
     }
   });
 
-  // Step 2: Handle incoming proof
   bot.on("message", async (ctx) => {
-    if (!ctx.session || !ctx.session.awaiting_proof_299) return;
+    if (!awaitingProofUsers299.has(ctx.from.id)) return;  // Only handle if flagged
 
     const userId = ctx.from.id;
     const username = ctx.from.username || "N/A";
@@ -48,7 +46,6 @@ ${messageContent}
         });
       }
 
-      // Send inline keyboard to admin with plan-specific callback
       await ctx.telegram.sendMessage(config.ADMIN_ID, "Take action on this payment:", {
         reply_markup: {
           inline_keyboard: [
@@ -64,10 +61,10 @@ ${messageContent}
         ctx.chat.id,
         "Thank you. Your payment is being processed. You'll receive access shortly."
       );
+
+      awaitingProofUsers299.delete(userId);  // Remove flag after proof received
     } catch (err) {
       console.error("Error forwarding proof:", err);
     }
-
-    ctx.session.awaiting_proof_99 = false;
   });
 };
