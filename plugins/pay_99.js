@@ -1,7 +1,9 @@
 module.exports = (bot) => {
   bot.action("pay_99", async (ctx) => {
     try {
-      await ctx.editMessageText(
+      await ctx.answerCbQuery(); // Acknowledge callback to avoid loading spinner
+
+      await ctx.sendMessage(
         "Choose payment method\n\n" +
         "You can pay with VISA/MasterCard or with Cryptocurrency.",
         {
