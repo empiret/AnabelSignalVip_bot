@@ -1,4 +1,4 @@
 module.exports = {
-        BOT_TOKEN: '7855368643:AAGy4Lbk6_t7F8J1x9Eus0-OCz2l9-kgBSo',
+        BOT_TOKEN: '7855368643:AAGSfLb8r3iLmPiWdOUmh58bEfrnSH_6RpM',
         ADMIN_ID: '2355555',
 };
