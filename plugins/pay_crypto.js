@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const NOWPAYMENTS_API_KEY = "PMRMKH5-S2RM792-GV83TY8-NQBZY0B"; // Replace with your real key
+const NOWPAYMENTS_API_KEY = "PMRMKH5-S2RM792-GV83TY8-NQBZY0B"; 
 const NOWPAYMENTS_API_URL = "https://api.nowpayments.io/v1/invoice";
 
 module.exports = (bot) => {
