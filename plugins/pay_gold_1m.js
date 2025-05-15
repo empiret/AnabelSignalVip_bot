@@ -8,8 +8,12 @@ module.exports = (bot) => {
         },
         {
           caption:
-            "GOLD SIGNALS VIP Subscription Options\n\n" +
-            "Please select a subscription package:",
+            "I have a SPECIAL OFFER for you🎁\n\n" +
+            "You will get:\n\n" +
+            "💎3+ signals daily\n" +
+            "💎Entry, Stop Loss\n" +
+            "💎One Take Profit\n" +
+            "💎Forex, Gold, Oil, Indexes",
           parse_mode: "Markdown",
           reply_markup: {
             inline_keyboard: [
