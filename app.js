@@ -10,6 +10,7 @@ fs.readdirSync(path.join(__dirname, "plugins")).forEach((file) => {
   const plugin = require(`./plugins/${file}`);
   if (typeof plugin === "function") plugin(bot);
 });
+console.log("plugins installed...");
 
 
 bot.launch();
