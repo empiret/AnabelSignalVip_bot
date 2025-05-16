@@ -1,5 +1,5 @@
 module.exports = (bot) => {
-  bot.command("proceed_account", async (ctx) => {
+  bot.action("proceed_account", async (ctx) => {
     await ctx.replyWithPhoto(
       { url: "https://files.catbox.moe/tg23p6.png" },
       {
