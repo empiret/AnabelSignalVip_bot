@@ -8,7 +8,7 @@ module.exports = (bot) => {
           parse_mode: "Markdown",
           reply_markup: {
             inline_keyboard: [
-              [{ text: "Contact Admin", url: "https://t.me/only_one_empire" }],
+              [{ text: "Contact Admin", url: "https://t.me/AnabelSignalContact1" }],
               [{ text: "« Back", callback_data: "pay_crypto" }],
             ],
           },
