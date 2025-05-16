@@ -16,7 +16,7 @@ module.exports = (bot) => {
           "2. Get your payment link\n" +
           "3. Pay\n" +
           "4. Receive invitation link\n\n" +
-          "*Need Help?* Contact: @laxtechbot",
+          "*Need Help?* Contact:      @AnabelSignalContact1",
         parse_mode: "Markdown",
       },
       {
@@ -47,7 +47,7 @@ module.exports = (bot) => {
           "2. Get your payment link\n" +
           "3. Pay\n" +
           "4. Receive invitation link\n\n" +
-          "*Need Help?* Contact: @laxtechbot",
+          "*Need Help?* Contact: @AnabelSignalContact1",
         parse_mode: "Markdown",
         reply_markup: {
           inline_keyboard: [
