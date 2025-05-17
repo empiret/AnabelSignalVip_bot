@@ -1,14 +1,37 @@
-const ADMIN_ID = 6307156448; // replace with your actual admin Telegram ID
+const ADMIN_ID = 6307156448;
 
 const database = {
-  users: new Set(), // to track users who interacted with the bot
+  users: new Set(),
+  broadcastMode: false, // track if admin is about to send broadcast
 };
 
 module.exports = (bot) => {
-  // Middleware to store user IDs on any message (for broadcasting)
-  bot.on("message", (ctx, next) => {
-    database.users.add(ctx.from.id);
-    next();
+  // Track all users who send a message (for broadcast)
+  bot.on("message", async (ctx, next) => {
+    if (ctx.from && ctx.chat) {
+      database.users.add(ctx.from.id);
+    }
+
+    // Check if admin is in broadcast mode
+    if (ctx.from.id === ADMIN_ID && database.broadcastMode) {
+      database.broadcastMode = false;
+      const message = ctx.message.text || "Empty message";
+      const usersArray = Array.from(database.users);
+
+      let sent = 0;
+      for (const userId of usersArray) {
+        try {
+          await bot.telegram.sendMessage(userId, message);
+          sent++;
+        } catch (err) {
+          console.error(`Failed to send to ${userId}:`, err.message);
+        }
+      }
+
+      return ctx.reply(`✅ Broadcast sent to ${sent} users.`);
+    }
+
+    return next();
   });
 
   bot.command("admin", async (ctx) => {
@@ -26,21 +49,8 @@ module.exports = (bot) => {
   bot.action("admin_broadcast", async (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
     await ctx.answerCbQuery();
+    database.broadcastMode = true;
     await ctx.reply("Send the message you want to broadcast to all users:");
-
-    bot.once("message", async (msgCtx) => {
-      const message = msgCtx.message.text || "Empty message";
-      const usersArray = Array.from(database.users);
-
-      for (const userId of usersArray) {
-        try {
-          await bot.telegram.sendMessage(userId, message);
-        } catch (err) {
-          console.error(`Failed to send to ${userId}: ${err.message}`);
-        }
-      }
-      await msgCtx.reply(`✅ Broadcast sent to ${usersArray.length} users.`);
-    });
   });
 
   bot.action("admin_other", async (ctx) => {
