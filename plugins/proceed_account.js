@@ -5,7 +5,7 @@ module.exports = (bot) => {
       await ctx.editMessageMedia(
         {
           type: "photo",
-          media: "https://files.catbox.moe/tg23p6.png",
+          media: "https://files.catbox.moe/25rj59.jpg",
           caption:
             "Dear user kindly drop YOUR KYC DETAILS:\n\n" +
             "*NAME*\n*RESIDENTIAL ADDRESS*\n*GENDER*\n*DATE OF BIRTH (AGE)*",
