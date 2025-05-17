@@ -11,7 +11,7 @@ module.exports = (bot) => {
         {
           reply_markup: {
             inline_keyboard: [
-              [{ text: "Pay with Crypto", url: paymentLink }],
+              [{ text: "Pay with Crypto", web_app: { url: paymentLink } }],
               [{ text: "« Back", callback_data: "pay_199" }],
               [{ text: "Send Proof", callback_data: "send_proof199" }],
             ],
