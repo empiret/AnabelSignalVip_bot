@@ -3,7 +3,7 @@ module.exports = (bot) => {
     try {
       await ctx.answerCbQuery();
 
-      const paymentLink = "https://nowpayments.io/payment/?iid=5369853554";
+      const paymentLink = "https://nowpayments.io/payment/?iid=5217718325";
 
       await ctx.telegram.sendMessage(
         ctx.chat.id,
