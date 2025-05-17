@@ -1,4 +1,4 @@
-const ADMIN_ID = 123456789; // replace with your actual admin Telegram ID
+const ADMIN_ID = 6307156448; // replace with your actual admin Telegram ID
 
 const database = {
   users: new Set(), // to track users who interacted with the bot
