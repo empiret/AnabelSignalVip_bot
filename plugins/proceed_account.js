@@ -14,7 +14,7 @@ module.exports = (bot) => {
         {
           reply_markup: {
             inline_keyboard: [
-              [{ text: "Send KYC", url: "https://t.me/anabelsignalcCS_bot" }],
+              [{ text: "Send KYC", url: "https://t.me/AnabelSignalContact1" }],
               [{ text: "« Back", callback_data: "account_schemes" }],
             ],
           },
