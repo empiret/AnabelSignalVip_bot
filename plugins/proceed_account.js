@@ -3,7 +3,8 @@ module.exports = (bot) => {
     try {
       await ctx.answerCbQuery(); // Acknowledge the callback to avoid loading animation
 
-      const adminLink = "ttps://t.me/AnabelSignalContact1";
+      const adminLink = "https://t.me/AnabelSignalContact1"; // Fixed missing 'h' in URL
+
       await ctx.editMessageMedia(
         {
           type: "photo",
@@ -16,7 +17,7 @@ module.exports = (bot) => {
         {
           reply_markup: {
             inline_keyboard: [
-             [{ text: "Send KYC", web_app: { url: adminLink } }],
+              [{ text: "Send KYC", web_app: { url: adminLink } }],
               [{ text: "« Back", callback_data: "account_schemes" }],
             ],
           },
