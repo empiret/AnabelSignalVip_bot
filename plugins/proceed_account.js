@@ -2,6 +2,8 @@ module.exports = (bot) => {
   bot.action("proceed_account", async (ctx) => {
     try {
       await ctx.answerCbQuery(); // Acknowledge the callback to avoid loading animation
+
+      const adminLink = "ttps://t.me/AnabelSignalContact1";
       await ctx.editMessageMedia(
         {
           type: "photo",
@@ -14,7 +16,7 @@ module.exports = (bot) => {
         {
           reply_markup: {
             inline_keyboard: [
-              [{ text: "Send KYC", url: "https://t.me/AnabelSignalContact1" }],
+             [{ text: "Send KYC", web_app: { url: adminLink } }],
               [{ text: "« Back", callback_data: "account_schemes" }],
             ],
           },
