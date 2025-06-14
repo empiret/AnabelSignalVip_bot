@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const express = require("express");
 
-const bot = new Telegraf("7964318828:AAGyYkiEWtK5aDkaps-7X8qn3-CKJlA7ycU");
+const bot = new Telegraf("7964318828:AAEps5IWGwk6KGxPXcgOXufPgipXvtFgca8");
 
 // Load plugins
 console.log("Installing plugins...");
