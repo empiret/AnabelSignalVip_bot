@@ -24,7 +24,7 @@ module.exports = (bot) => {
           inline_keyboard: [
             [{ text: "FOREX SIGNALS VIP", callback_data: "buyForexVIP" }],
             [{ text: "GOLD SIGNALS VIP", callback_data: "buyGoldVIP" }],
-            [{ text: "ACCOUNT MANAGEMENT SCHEME", callback_data: "account_schemes" }],
+            [{ text: "LOSS RECOVERY PACKAGES ‼️", callback_data: "account_schemes" }],
           ],
         },
       }
@@ -53,7 +53,7 @@ module.exports = (bot) => {
           inline_keyboard: [
             [{ text: "FOREX SIGNALS VIP", callback_data: "buyForexVIP" }],
             [{ text: "GOLD SIGNALS VIP", callback_data: "buyGoldVIP" }],
-            [{ text: "ACCOUNT MANAGEMENT SCHEME", callback_data: "account_schemes" }],
+            [{ text: "LOSS RECOVERY PACKAGES ‼️", callback_data: "account_schemes" }],
           ],
         },
       }
