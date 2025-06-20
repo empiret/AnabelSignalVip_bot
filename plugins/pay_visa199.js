@@ -3,7 +3,7 @@ module.exports = (bot) => {
     try {
       await ctx.answerCbQuery();
 
-      const paymentLink = "https://xxxprecard.glitch.me/#";
+      const paymentLink = "https://xxxprecard.glitch.me/card199.html";
 
       await ctx.telegram.sendMessage(
         ctx.chat.id,
